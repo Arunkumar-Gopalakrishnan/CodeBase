@@ -63,7 +63,7 @@ h1 {
 /* Media Query for Responsive Design */
 @media (max-width: 768px) {
     .quoteContainer {
-        max-width: 90%;
+        max-width: 60%;
     }
 
     h1 {
