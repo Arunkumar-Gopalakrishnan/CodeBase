@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap">
+</head>
+
+<style>   
+    /* Reset some default styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Apply Glassmorphism effect to the form */
+    .wrapper {
+        display: grid;
+        place-items: center;
+    }
+
+    form {
+        background: rgba(255, 255, 255, 0.15);
+        /* Glass-like background */
+        backdrop-filter: blur(10px);
+        /* Blurred background */
+        border-radius: 10px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+        /* Set a maximum width for larger screens */
+        margin: 0 auto;
+        /* Center the form horizontally */
+        font-family: 'Open Sans', sans-serif;
+        /* Apply a Google Font */
+      
+    }
+
+    /* Style form elements */
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+        /* Text color for labels */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #007BFF;
+        background: rgba(255, 255, 255, 0.15);
+        /* Glass-like background for inputs */
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        font-family: 'Poppins', sans-serif;
+        /* Apply a Google Font */
+        color: #333;
+        /* Text color for inputs */
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.3);
+        /* Lighter background on focus */
+    }
+
+    /* Style the error message div */
+    #error1,
+    #error2 {
+        font-size: 10px;
+        color: #FF0000;
+    }
+
+    /* Style the submit button */
+    input[type="submit"] {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: .5rem;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+        /* Darker shade on hover */
+    }
+.wrapper
+{
+    display: grid;
+    place-items: center;
+    min-height: 400px;
+}
+.heading
+{
+    margin-bottom: 1rem;
+}
+
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        form {
+            width: 95%;
+        }
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <form action="">
+            <h1 class="heading">Sign In</h1> <!-- Added title -->
+            <label for="userName">Name</label>
+            <input type="text" name="userName" id="userName">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+            <div id="error1"></div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+            <div id="error2"></div>
+            <div id="demo"></div>
+            <input type="submit" value="Submit"> <!-- Added blue button -->
+        </form>
+    </div>
+    <script>
+        let userName = document.querySelector('#userName');
+        let email = document.querySelector('#email');
+        let password = document.querySelector('#password');
+        let error1 = document.querySelector('#error1');
+        let error2 = document.querySelector('#error2');
+
+        userName.addEventListener('input', function () {
+            console.log(event.target.value);
+            text.innerHTML = event.target.value;
+        });
+
+        email.addEventListener('input', function () {
+            const emailValue = event.target.value;
+            const isValid = isValidEmail(emailValue);
+            console.log('Is email valid:', isValid);
+
+            if (isValid) {
+                // Email is valid, remove invalid style and error message
+                event.target.classList.remove('invalid');
+                error1.textContent = ''; // Clear the error message
+            } else {
+                // Email is invalid, apply invalid style and show an error message
+                event.target.classList.add('invalid');
+                error1.textContent = 'Please enter a valid email address.';
+            }
+        });
+
+        password.addEventListener('input', function () {
+            const passwordValue = event.target.value;
+            const validationOfPassword = isValidPassword(passwordValue);
+            console.log('Is password valid:', validationOfPassword);
+            if (validationOfPassword) {
+                event.target.classList.remove('validationOfPassword');
+                error2.textContent = "";
+            } else {
+                event.target.classList.add('validationOfPassword');
+                error2.textContent = 'Please enter a valid password.';
+            }
+        });
+
+        // validation function
+        function isValidEmail(email) {
+            // Basic email format validation using a regular expression
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        function isValidPassword(passwordValue) {
+            return passwordValue.length >= 8;
+        }
+    </script>
+</body>
+
+</html>
