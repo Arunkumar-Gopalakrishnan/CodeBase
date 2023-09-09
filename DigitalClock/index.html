@@ -22,18 +22,21 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         display: inline-block;
+        min-width: 100px;
+        max-width: 500px;
+        width: 15vw;
     }
 
     .clockData span {
         display: inline-block;
         min-width: 2ch;
-        /* Ensure constant width for the digits */
         text-align: center;
         margin: 0 5px;
     }
 </style>
 
 <body>
+    <h1>Digital Clock</h1>
     <div class="todayDate"></div>
     <div class="clockData">
     </div>
