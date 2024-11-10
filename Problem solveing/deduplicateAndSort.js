@@ -4,7 +4,8 @@ let array2 = [22,333,444];
 function deduplicateAndSort(arr){
     let removeDuplicate = new Set(arr);
     console.log(removeDuplicate);
-    let converToObject = [...removeDuplicate];
+    let converToArray = [...removeDuplicate];
+    console.log(converToArray);
     converToObject.sort((a,b) => a - b);
     return converToObject;
 }
