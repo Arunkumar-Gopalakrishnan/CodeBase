@@ -6,9 +6,12 @@ function MultiplyNumber(num1,num2){
     if(typeof num1 === "number" && typeof num2 === "number")
     {
          result = num2 * num1;
+    }else{
+
+    result = "Please enter the valid Number"
     }
-    
     
     return result;
 }
 console.log(MultiplyNumber(2,4));
+console.log(MultiplyNumber(2,"a"));

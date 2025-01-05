@@ -11,3 +11,4 @@ function deduplicateAndSort(arr){
 }
 
 console.log(deduplicateAndSort(array));
+    
